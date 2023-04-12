@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxew5xyh8o4sm"]
+
+[ext_resource type="Texture2D" uid="uid://dxckivews0uid" path="res://Player/Pbullet.png" id="1_1se8n"]
+[ext_resource type="Script" path="res://Misc/Bullet.gd" id="1_fg7pr"]
+[ext_resource type="Script" path="res://Misc/Area.gd" id="2_xrv7a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nph4w"]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfd6v"]
+radius = 5.0
+
+[node name="PBullet" type="CharacterBody2D"]
+script = ExtResource("1_fg7pr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_xrv7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nph4w")
+
+[node name="Pbullet" type="Sprite2D" parent="."]
+texture = ExtResource("1_1se8n")
+
+[node name="World" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World"]
+shape = SubResource("CircleShape2D_rfd6v")
+
+[connection signal="body_entered" from="World" to="." method="_on_world_body_entered"]

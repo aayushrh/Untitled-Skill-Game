@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc4i8r65cxdy8"]
+
+[ext_resource type="Script" path="res://Misc/PManager.gd" id="1_1vccv"]
+
+[node name="PManager" type="Node2D"]
+script = ExtResource("1_1vccv")

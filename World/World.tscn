@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://df01ax1ow0wy3"]
+
+[ext_resource type="Script" path="res://World/World.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b56h00l5i12lp" path="res://World/Box.tscn" id="4"]
+[ext_resource type="Script" path="res://World/RespawnUI.gd" id="5"]
+[ext_resource type="Script" path="res://World/Camera2D.gd" id="6"]
+[ext_resource type="Script" path="res://World/UI.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://bdq2vqn41c7l8" path="res://Misc/Preview.tscn" id="8_lal4t"]
+[ext_resource type="Texture2D" uid="uid://dpp2knkfkb7tb" path="res://Guns/New Project (1).png" id="10"]
+[ext_resource type="Texture2D" uid="uid://kck5hy2c1r1v" path="res://Guns/New Project.png" id="11"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(458, 420)
+script = ExtResource("6")
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="Box" parent="Boxes" instance=ExtResource("4")]
+position = Vector2(227, 771)
+
+[node name="Box2" parent="Boxes" instance=ExtResource("4")]
+position = Vector2(508, 612)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("4")]
+position = Vector2(784, 624)
+
+[node name="Box4" parent="Boxes" instance=ExtResource("4")]
+position = Vector2(262, 372)
+
+[node name="Box5" parent="Boxes" instance=ExtResource("4")]
+position = Vector2(579, 382)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.25, 2)
+script = ExtResource("8")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 120.0
+offset_bottom = 24.0
+color = Color(1, 0, 0, 1)
+
+[node name="Time" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 200.889
+offset_top = 8.0
+offset_right = 242.889
+offset_bottom = 31.0
+
+[node name="Materials" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 375.111
+offset_top = 5.0
+offset_right = 415.111
+offset_bottom = 28.0
+
+[node name="RespawnUI" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_right = 427.0
+offset_bottom = 269.0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="ColorRect" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 416.0
+offset_bottom = 254.0
+color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[node name="V2" type="Button" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 50.6667
+offset_top = 13.0
+offset_right = 78.6667
+offset_bottom = 33.0
+text = "V2"
+
+[node name="V1" type="Button" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 41.0
+offset_bottom = 33.0
+text = "V1"
+
+[node name="Pistol" type="Button" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 17.7778
+offset_top = 225.0
+offset_right = 36.7778
+offset_bottom = 245.0
+button_mask = 3
+
+[node name="Shotgun" type="Button" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 45.7778
+offset_top = 225.0
+offset_right = 65.7778
+offset_bottom = 245.0
+button_mask = 3
+
+[node name="PistolSprite" type="Sprite2D" parent="CanvasLayer/UI/RespawnUI"]
+position = Vector2(27.5063, 234.858)
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11")
+
+[node name="ShotgunSprite" type="Sprite2D" parent="CanvasLayer/UI/RespawnUI"]
+position = Vector2(55.5508, 235.3)
+rotation = 1.5708
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("10")
+
+[node name="PistolCount" type="Label" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.075
+offset_left = 32.6667
+offset_top = 235.0
+offset_right = 57.6667
+offset_bottom = 268.0
+text = "1
+"
+
+[node name="ShotgunCount" type="Label" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.075
+offset_left = 59.0
+offset_top = 235.0
+offset_right = 84.0
+offset_bottom = 268.0
+text = "1
+"
+
+[node name="Create" type="Button" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 215.5
+offset_right = 408.0
+offset_bottom = 246.5
+text = "Create"
+
+[node name="Materials" type="Label" parent="CanvasLayer/UI/RespawnUI"]
+layout_mode = 0
+offset_left = 380.889
+offset_top = 14.5
+offset_right = 414.889
+offset_bottom = 37.5
+
+[node name="Preview" parent="CanvasLayer/UI/RespawnUI" instance=ExtResource("8_lal4t")]
+position = Vector2(204, 123.5)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="pressed" from="CanvasLayer/UI/RespawnUI/V2" to="CanvasLayer/UI/RespawnUI" method="_on_V2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/RespawnUI/V1" to="CanvasLayer/UI/RespawnUI" method="_on_V1_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/RespawnUI/Pistol" to="CanvasLayer/UI/RespawnUI" method="_on_Pistol_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/RespawnUI/Shotgun" to="CanvasLayer/UI/RespawnUI" method="_on_Shotgun_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/RespawnUI/Create" to="CanvasLayer/UI/RespawnUI" method="_on_Create_pressed"]

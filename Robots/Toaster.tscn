@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://5f6xdwpo46hi"]
+
+[ext_resource type="Script" path="res://Robots/Toaster.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://lwk4oecfbcjv" path="res://Robots/Toaster.png" id="2_tcvmo"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 0.0
+height = 0.0
+
+[sub_resource type="CapsuleShape2D" id="2"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 77.0065
+
+[sub_resource type="CircleShape2D" id="4"]
+radius = 506.285
+
+[node name="Toaster" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1")
+ACCELERATION = 1500
+MAX_SPEED = 1500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_tcvmo")
+offset = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("1")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 9)
+rotation = 1.5708
+shape = SubResource("2")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Respawn" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn"]
+shape = SubResource("3")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="Timer3" type="Timer" parent="."]
+
+[node name="EnemyDetection" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
+shape = SubResource("4")
+
+[node name="Position2D2" type="Marker2D" parent="."]
+position = Vector2(12, 0)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="body_entered" from="Respawn" to="." method="_on_Respawn_body_entered"]
+[connection signal="body_exited" from="Respawn" to="." method="_on_Respawn_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]
+[connection signal="body_exited" from="EnemyDetection" to="." method="_on_EnemyDetection_body_exited"]

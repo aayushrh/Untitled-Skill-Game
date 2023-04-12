@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdq2vqn41c7l8"]
+
+[ext_resource type="Script" path="res://Misc/Preview.gd" id="1_xjvpl"]
+
+[node name="Preview" type="Sprite2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_xjvpl")
