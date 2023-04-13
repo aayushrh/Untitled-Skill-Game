@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxew5xyh8o4sm"]
 
-[ext_resource type="Texture2D" uid="uid://dxckivews0uid" path="res://Player/Pbullet.png" id="1_1se8n"]
 [ext_resource type="Script" path="res://Misc/Bullet.gd" id="1_fg7pr"]
 [ext_resource type="Script" path="res://Misc/Area.gd" id="2_xrv7a"]
+[ext_resource type="Texture2D" uid="uid://c7c1onbuyq5ym" path="res://Player/laserBlue01.png" id="3_5iy28"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nph4w"]
 radius = 4.12311
@@ -22,7 +22,9 @@ script = ExtResource("2_xrv7a")
 shape = SubResource("CircleShape2D_nph4w")
 
 [node name="Pbullet" type="Sprite2D" parent="."]
-texture = ExtResource("1_1se8n")
+position = Vector2(0, 6.5)
+scale = Vector2(1, 0.425926)
+texture = ExtResource("3_5iy28")
 
 [node name="World" type="Area2D" parent="."]
 

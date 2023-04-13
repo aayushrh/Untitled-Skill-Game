@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://chki40e2spjvj"]
 
-[ext_resource path="res://Guns/Shotgun.gd" type="Script" id=1]
-[ext_resource path="res://Guns/New Project (1).png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://Guns/Shotgun.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dpp2knkfkb7tb" path="res://Guns/New Project (1).png" id="2"]
 
 [node name="Shotgun" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 2 )
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2")
 
 [node name="firepoint" type="Marker2D" parent="."]
-position = Vector2( 13, 0 )
+position = Vector2(13, 0)
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -21,6 +21,6 @@ offset_left = -14.0
 offset_top = -4.0
 offset_right = -14.0
 offset_bottom = 4.0
-color = Color( 0.658824, 0.0627451, 0.0627451, 1 )
+color = Color(0.658824, 0.0627451, 0.0627451, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

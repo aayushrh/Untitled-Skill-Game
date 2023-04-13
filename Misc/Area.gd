@@ -4,4 +4,4 @@ var damage = 0
 var hit = false
 
 func _kill():
-	hit = true
+	get_parent()._kill()

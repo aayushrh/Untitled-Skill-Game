@@ -9,9 +9,11 @@ var lifetime = 0
 
 func _init():
 	velocity = direction * speed
+	rotation_degrees = atan2(velocity.y, velocity.x)*180/PI + 90
 
 func _process(_delta):
 	move_and_slide()
+	_updateLife()
 	if(counter == 1):
 		$Area2D.damage = damage
 	counter += 1
@@ -22,4 +24,7 @@ func _updateLife():
 	lifetime -= 1
 
 func _on_world_body_entered(body):
+	queue_free()
+	
+func _kill():
 	queue_free()

@@ -12,10 +12,8 @@ var can_shoot = true
 var guns = []
 var gunsString = []
 var offset = 0
-var enemies = []
 
 signal pdeath
-signal stashed(things)
 
 #var velocity = Vector2.ZERO
 
@@ -56,7 +54,7 @@ func _process(delta):
 	if firing1 and can_shoot:
 		guns[0].shoot_over($Marker2D.rotation_degrees + guns[0].rotation_degrees)
 		can_shoot = false
-		$Timer2.start(0.3)
+		$Timer.start(0.3)
 		
 	if Input.is_action_just_pressed("shoot_2"):
 		firing2 = true
@@ -65,7 +63,7 @@ func _process(delta):
 	if firing2 and can_shoot and guns.size() > 1:
 		guns[1].shoot_over($Marker2D.rotation_degrees + guns[1].rotation_degrees)
 		can_shoot = false
-		$Timer2.start(0.3)
+		$Timer.start(0.3)
 		
 	PManager.Pposition = global_position
 	var input_vector = Vector2.ZERO
@@ -92,19 +90,3 @@ func rotateToTarget(thing, target, delta):
 	var angleTo = 0
 	angleTo = thing.transform.x.angle_to(direction)
 	thing.rotate(sign(angleTo) * min(delta * ROTATIONSPEED, abs(angleTo)))
-
-func _on_Hurtbox_area_entered(area):
-	area._kill()
-	PManager.health -= area.damage
-	if PManager.health <= 0 :
-		emit_signal("pdeath")
-		queue_free()
-
-func _on_Timer2_timeout():
-	can_shoot = true
-
-func _on_EnemyDetection_body_entered(body):
-	enemies.append(body)
-
-func _on_EnemyDetection_body_exited(body):
-	enemies.remove(body)

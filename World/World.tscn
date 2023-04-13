@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://df01ax1ow0wy3"]
+[gd_scene load_steps=10 format=3 uid="uid://df01ax1ow0wy3"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b56h00l5i12lp" path="res://World/Box.tscn" id="4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://World/Camera2D.gd" id="6"]
 [ext_resource type="Script" path="res://World/UI.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://bdq2vqn41c7l8" path="res://Misc/Preview.tscn" id="8_lal4t"]
+[ext_resource type="PackedScene" uid="uid://7pald5aeqene" path="res://Enemies/SingleGunEnemy.tscn" id="9_o08n3"]
 [ext_resource type="Texture2D" uid="uid://dpp2knkfkb7tb" path="res://Guns/New Project (1).png" id="10"]
 [ext_resource type="Texture2D" uid="uid://kck5hy2c1r1v" path="res://Guns/New Project.png" id="11"]
 
@@ -169,6 +170,13 @@ offset_bottom = 37.5
 [node name="Preview" parent="CanvasLayer/UI/RespawnUI" instance=ExtResource("8_lal4t")]
 position = Vector2(204, 123.5)
 scale = Vector2(0.4, 0.4)
+
+[node name="SingleGunEnemy" parent="." instance=ExtResource("9_o08n3")]
+position = Vector2(1229, 821)
+startingGuns = ["Pistol"]
+
+[node name="SingleGunEnemy2" parent="." instance=ExtResource("9_o08n3")]
+position = Vector2(1047, 856)
 
 [connection signal="pressed" from="CanvasLayer/UI/RespawnUI/V2" to="CanvasLayer/UI/RespawnUI" method="_on_V2_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/RespawnUI/V1" to="CanvasLayer/UI/RespawnUI" method="_on_V1_pressed"]

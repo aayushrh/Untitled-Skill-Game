@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://7pald5aeqene"]
+
+[ext_resource type="Script" path="res://Enemies/SingleGunEnemy.gd" id="1_ki5tn"]
+[ext_resource type="Texture2D" uid="uid://lwk4oecfbcjv" path="res://Robots/Toaster.png" id="1_pv76k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yl5c"]
+radius = 15.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_topra"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_68nu2"]
+radius = 1063.83
+
+[node name="SingleGunEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_ki5tn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_pv76k")
+offset = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2yl5c")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_topra")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="PlayerDetection" type="Area2D" parent="Pivot"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pivot/PlayerDetection"]
+position = Vector2(1, -2)
+polygon = PackedVector2Array(-11, -20, 7, -20, 152, -309, -165, -306, -11, -20)
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource("CircleShape2D_68nu2")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Pivot/PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Pivot/PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]

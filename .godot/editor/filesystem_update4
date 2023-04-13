@@ -1,0 +1,9 @@
+res://default_env.tres
+res://Enemies/Ebullet.tscn
+res://Player/Pbullet.tscn
+res://World/StartingScreen.tscn
+res://Enemies/SingleGunEnemy.tscn
+res://World/World.tscn
+res://Guns/Shotgun.tscn
+res://Misc/Bullet.gd
+res://World/World.gd
